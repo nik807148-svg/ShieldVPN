@@ -104,7 +104,7 @@ android {
     buildTypes {
         release {
             if (hasKeyStore) {
-                signingConfig signingConfigs.release
+                signingConfig signingConfigs.debug
             } else {
                 signingConfig signingConfigs.debug
             }
