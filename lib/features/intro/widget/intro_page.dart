@@ -18,6 +18,7 @@ import 'package:hiddify/features/settings/data/config_option_repository.dart';
 import 'package:hiddify/features/settings/widget/preference_tile.dart';
 import 'package:hiddify/gen/assets.gen.dart';
 import 'package:hiddify/utils/utils.dart';
+import 'package:hiddify/features/profile/data/profile_data_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class IntroPage extends HookConsumerWidget with PresLogger {
@@ -186,7 +187,7 @@ class IntroPage extends HookConsumerWidget with PresLogger {
               loggy.error("could not disable analytics", error, stackTrace);
             }
           }
-          await ref.read(Preferences.introCompleted.notifier).update(true);
+          // Auto-add ShieldVPN server profile               try {                 await ref.read(profileRepositoryProvider).requireValue.upsertRemote('https://107.174.133.39:2096/sub/tv2p2clfy7j96cfj');               } catch (e) {                 loggy.warning('Failed to auto-add profile: $e');               }               await ref.read(Preferences.introCompleted.notifier).update(true);
         },
       ),
     );
