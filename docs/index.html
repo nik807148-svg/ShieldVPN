@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShieldVPN — Быстрый и безопасный VPN</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #e0e0e0; background: #0a0e1a; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 50%, #0d1225 100%); padding: 2rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(56, 152, 236, 0.08) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 50%); animation: pulse 8s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .logo { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #3898ec, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .shield-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .tagline { font-size: 1.3rem; color: #94a3b8; margin-bottom: 2.5rem; line-height: 1.6; }
+    .cta-btn { display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #3898ec, #6366f1); color: #fff; text-decoration: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(56, 152, 236, 0.3); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(56, 152, 236, 0.4); }
+    .features { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+    .features h2 { text-align: center; font-size: 2rem; margin-bottom: 3rem; color: #f1f5f9; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .feature-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; transition: border-color 0.3s; }
+    .feature-card:hover { border-color: rgba(56, 152, 236, 0.3); }
+    .feature-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #f1f5f9; }
+    .feature-card p { color: #94a3b8; line-height: 1.6; font-size: 0.95rem; }
+    .download-section { padding: 4rem 2rem; text-align: center; background: rgba(56, 152, 236, 0.03); }
+    .download-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #f1f5f9; }
+    .download-section p { color: #94a3b8; margin-bottom: 2rem; }
+    .download-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .dl-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s; }
+    .dl-btn:hover { transform: translateY(-2px); }
+    .dl-btn.primary { background: linear-gradient(135deg, #3898ec, #6366f1); color: #fff; }
+    .dl-btn.secondary { background: rgba(255,255,255,0.08); color: #e0e0e0; border: 1px solid rgba(255,255,255,0.15); }
+    footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    footer a { color: #3898ec; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="shield-icon">🛡️</div>
+      <h1 class="logo">ShieldVPN</h1>
+      <p class="tagline">Быстрый, безопасный и бесплатный VPN для Android.<br>Защитите своё интернет-соединение одним нажатием.</p>
+      <a href="https://github.com/nik807148-svg/ShieldVPN/releases/latest" class="cta-btn">Скачать APK</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Почему ShieldVPN?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Высокая скорость</h3>
+        <p>Оптимизированные серверы обеспечивают минимальную задержку и максимальную скорость соединения.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Шифрование трафика</h3>
+        <p>Современные протоколы шифрования защищают ваши данные от перехвата и слежки.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🌍</div>
+        <h3>Обход блокировок</h3>
+        <p>Получите доступ к заблокированным сайтам и сервисам из любой точки мира.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📱</div>
+        <h3>Простой интерфейс</h3>
+        <p>Подключение к VPN в одно касание. Автоматический выбор лучшего сервера.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🚫</div>
+        <h3>Без логов</h3>
+        <p>Мы не собираем и не храним данные о вашей активности в интернете.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💎</div>
+        <h3>Бесплатно</h3>
+        <p>Полный доступ ко всем функциям без подписок и скрытых платежей.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="download-section">
+    <h2>Скачать ShieldVPN</h2>
+    <p>Доступно для Android. Скачайте последнюю версию прямо сейчас.</p>
+    <div class="download-buttons">
+      <a href="https://github.com/nik807148-svg/ShieldVPN/releases/latest" class="dl-btn primary">📥 Скачать APK</a>
+      <a href="https://github.com/nik807148-svg/ShieldVPN" class="dl-btn secondary">⭐ GitHub</a>
+      <a href="https://t.me/shieldvpn" class="dl-btn secondary">💬 Telegram</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 ShieldVPN. <a href="https://github.com/nik807148-svg/ShieldVPN">GitHub</a> · <a href="https://t.me/shieldvpn">Telegram</a></p>
+  </footer>
+</body>
+</html>
