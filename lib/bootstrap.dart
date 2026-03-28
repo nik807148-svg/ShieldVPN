@@ -16,6 +16,7 @@ import 'package:hiddify/core/preferences/general_preferences.dart';
 import 'package:hiddify/core/preferences/preferences_migration.dart';
 import 'package:hiddify/core/preferences/preferences_provider.dart';
 import 'package:hiddify/features/app/widget/app.dart';
+import 'package:hiddify/features/auto_connect/auto_connect_service.dart';
 import 'package:hiddify/features/auto_start/notifier/auto_start_notifier.dart';
 
 import 'package:hiddify/features/log/data/log_data_providers.dart';
@@ -87,6 +88,11 @@ Future<void> lazyBootstrap(WidgetsBinding widgetsBinding, Environment env) async
   await _init("translations", () => container.read(translationsProvider.future));
 
   await _safeInit("active profile", () => container.read(activeProfileProvider.future), timeout: 1000);
+    // ShieldVPN: auto-add default profile on first launch
+  await _safeInit("auto-connect", () async {
+    final repo = await container.read(profileRepositoryProvider.future);
+    await AutoConnectService(profileRepository: repo, ref: container).setupDefaultProfile();
+  });
   await _init("hiddify-core", () => container.read(hiddifyCoreServiceProvider).init());
 
   if (!kIsWeb) {
