@@ -8,8 +8,18 @@ class AppTheme {
   final AppThemeMode mode;
   final String fontFamily;
 
+  // ShieldVPN brand colors
+  static const Color primaryColor = Color(0xFF2563EB);
+  static const Color accentColor = Color(0xFF22C55E);
+  static const Color backgroundColor = Color(0xFF020617);
+  static const Color cardColor = Color(0xFF0B1120);
+  static const Color textPrimary = Color(0xFFF9FAFB);
+  static const Color textSecondary = Color(0xFF9CA3AF);
+  static const Color dangerColor = Color(0xFFEF4444);
+
   ThemeData lightTheme(ColorScheme? lightColorScheme) {
-    final ColorScheme scheme = lightColorScheme ?? ColorScheme.fromSeed(seedColor: const Color(0xFF293CA0));
+    final ColorScheme scheme = lightColorScheme ??
+        ColorScheme.fromSeed(seedColor: primaryColor);
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
@@ -19,41 +29,64 @@ class AppTheme {
   }
 
   ThemeData darkTheme(ColorScheme? darkColorScheme) {
-    final ColorScheme scheme =
-        darkColorScheme ?? ColorScheme.fromSeed(seedColor: const Color(0xFF293CA0), brightness: Brightness.dark);
+    final ColorScheme scheme = darkColorScheme ??
+        ColorScheme.fromSeed(
+          seedColor: primaryColor,
+          brightness: Brightness.dark,
+        ).copyWith(
+          surface: backgroundColor,
+          primary: primaryColor,
+          secondary: accentColor,
+          error: dangerColor,
+          onSurface: textPrimary,
+        );
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
-      scaffoldBackgroundColor: mode.trueBlack ? Colors.black : scheme.background,
+      scaffoldBackgroundColor:
+          mode.trueBlack ? Colors.black : backgroundColor,
       fontFamily: fontFamily,
+      cardColor: cardColor,
       extensions: const <ThemeExtension<dynamic>>{ConnectionButtonTheme.light},
     );
   }
 
-  CupertinoThemeData cupertinoThemeData(bool sysDark, ColorScheme? lightColorScheme, ColorScheme? darkColorScheme) {
+  CupertinoThemeData cupertinoThemeData(
+    bool sysDark,
+    ColorScheme? lightColorScheme,
+    ColorScheme? darkColorScheme,
+  ) {
     final bool isDark = switch (mode) {
       AppThemeMode.system => sysDark,
       AppThemeMode.light => false,
       AppThemeMode.dark => true,
       AppThemeMode.black => true,
     };
-    final def = CupertinoThemeData(brightness: isDark ? Brightness.dark : Brightness.light);
-    // final def = CupertinoThemeData(brightness: Brightness.dark);
-
-    // return def;
-    final defaultMaterialTheme = isDark ? darkTheme(darkColorScheme) : lightTheme(lightColorScheme);
+    final def = CupertinoThemeData(
+      brightness: isDark ? Brightness.dark : Brightness.light,
+    );
+    final defaultMaterialTheme =
+        isDark ? darkTheme(darkColorScheme) : lightTheme(lightColorScheme);
     return MaterialBasedCupertinoThemeData(
       materialTheme: defaultMaterialTheme.copyWith(
         cupertinoOverrideTheme: def.copyWith(
           textTheme: CupertinoTextThemeData(
-            textStyle: def.textTheme.textStyle.copyWith(fontFamily: fontFamily),
-            actionTextStyle: def.textTheme.actionTextStyle.copyWith(fontFamily: fontFamily),
-            navActionTextStyle: def.textTheme.navActionTextStyle.copyWith(fontFamily: fontFamily),
-            navTitleTextStyle: def.textTheme.navTitleTextStyle.copyWith(fontFamily: fontFamily),
-            navLargeTitleTextStyle: def.textTheme.navLargeTitleTextStyle.copyWith(fontFamily: fontFamily),
-            pickerTextStyle: def.textTheme.pickerTextStyle.copyWith(fontFamily: fontFamily),
-            dateTimePickerTextStyle: def.textTheme.dateTimePickerTextStyle.copyWith(fontFamily: fontFamily),
-            tabLabelTextStyle: def.textTheme.tabLabelTextStyle.copyWith(fontFamily: fontFamily),
+            textStyle:
+                def.textTheme.textStyle.copyWith(fontFamily: fontFamily),
+            actionTextStyle:
+                def.textTheme.actionTextStyle.copyWith(fontFamily: fontFamily),
+            navActionTextStyle: def.textTheme.navActionTextStyle
+                .copyWith(fontFamily: fontFamily),
+            navTitleTextStyle: def.textTheme.navTitleTextStyle
+                .copyWith(fontFamily: fontFamily),
+            navLargeTitleTextStyle: def.textTheme.navLargeTitleTextStyle
+                .copyWith(fontFamily: fontFamily),
+            pickerTextStyle:
+                def.textTheme.pickerTextStyle.copyWith(fontFamily: fontFamily),
+            dateTimePickerTextStyle: def.textTheme.dateTimePickerTextStyle
+                .copyWith(fontFamily: fontFamily),
+            tabLabelTextStyle: def.textTheme.tabLabelTextStyle
+                .copyWith(fontFamily: fontFamily),
           ).copyWith(),
           barBackgroundColor: def.barBackgroundColor,
           scaffoldBackgroundColor: def.scaffoldBackgroundColor,
