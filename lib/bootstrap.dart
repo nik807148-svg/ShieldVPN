@@ -91,7 +91,7 @@ Future<void> lazyBootstrap(WidgetsBinding widgetsBinding, Environment env) async
     // ShieldVPN: auto-add default profile on first launch
   await _safeInit("auto-connect", () async {
     final repo = await container.read(profileRepositoryProvider.future);
-    await AutoConnectService(profileRepository: repo, ref: container).setupDefaultProfile();
+    await AutoConnectService(profileRepository: repo, container: container).setupDefaultProfile();
   });
   await _init("hiddify-core", () => container.read(hiddifyCoreServiceProvider).init());
 
