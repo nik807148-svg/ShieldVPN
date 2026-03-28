@@ -226,19 +226,19 @@ class _ConnectionButton extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              boxShadow: [BoxShadow(blurRadius: 16, color: buttonColor.withValues(alpha: .5))],
+              boxShadow: [BoxShadow(blurRadius: 28, spreadRadius: 4, color: buttonColor.withValues(alpha: .5))],
             ),
-            width: 148,
-            height: 148,
+            width: 180,
+            height: 180,
             child: Material(
               key: const ValueKey("home_connection_button"),
               shape: const CircleBorder(),
-              color: Colors.white,
+              color: const Color(0xFF0B1120),
               child: InkWell(
                 focusColor: Colors.grey,
                 onTap: onTap,
                 child: Padding(
-                  padding: const EdgeInsets.all(36),
+                  padding: const EdgeInsets.all(44),
                   child: TweenAnimationBuilder(
                     tween: ColorTween(end: buttonColor),
                     duration: const Duration(milliseconds: 250),
