@@ -16,18 +16,14 @@ class AutoConnectService with InfraLogger {
     try {
       final introCompleted = container.read(Preferences.introCompleted);
       if (introCompleted) return;
+
       loggy.info('First launch - adding default ShieldVPN profile');
-      const vlessUri =
-          'vless://shieldvpn-default@107.174.133.39:443'
-          '?type=tcp&security=reality'
-          '&pbk=O_bkOgKLdswCloNcKJcGBV3fyVfbO786GtRQj3Utfkc'
-          '&fp=chrome'
-          '&sni=www.nvidia.com'
-          '&sid=8e4a623c'
-          '&spx=%2F'
-          '&flow=xtls-rprx-vision'
-          '#ShieldVPN';
-      final result = await profileRepository.addLocal(vlessUri);
+
+      // Use subscription URL instead of local VLESS URI
+      final result = await profileRepository.upsertRemote(
+        'https://107.174.133.39:2096/sub/tv2p2clfy7j96cfj',
+      );
+
       result.match(
         (failure) => loggy.error('Failed to add default profile'),
         (_) {
