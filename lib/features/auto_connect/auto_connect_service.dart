@@ -8,13 +8,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 /// and skips the intro screen.
 class AutoConnectService with InfraLogger {
   final ProfileRepository profileRepository;
-  final Ref ref;
+  final ProviderContainer container;
 
-  AutoConnectService({required this.profileRepository, required this.ref});
+  AutoConnectService({required this.profileRepository, required this.container});
 
   Future<void> setupDefaultProfile() async {
     try {
-      final introCompleted = ref.read(Preferences.introCompleted);
+      final introCompleted = container.read(Preferences.introCompleted);
       if (introCompleted) return;
       loggy.info('First launch - adding default ShieldVPN profile');
       const vlessUri =
@@ -32,7 +32,7 @@ class AutoConnectService with InfraLogger {
         (failure) => loggy.error('Failed to add default profile'),
         (_) {
           loggy.info('Default ShieldVPN profile added successfully');
-          ref.read(Preferences.introCompleted.notifier).update(true);
+          container.read(Preferences.introCompleted.notifier).update(true);
         },
       );
     } catch (e, st) {
