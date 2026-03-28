@@ -13,6 +13,15 @@ abstract class Constants {
   static const termsAndConditionsUrl = "https://shieldvpn.app/terms/";
   static const cfWarpPrivacyPolicy = "https://www.cloudflare.com/application/privacypolicy/";
   static const cfWarpTermsOfService = "https://www.cloudflare.com/application/terms/";
+
+    // ShieldVPN default server configuration
+  static const defaultVpnServer = "107.174.133.39";
+  static const defaultVpnPort = 443;
+  static const defaultRealityPbk = "O_bkOgKLdswCloNcKJcGBV3fyVfbO786GtRQj3Utfkc";
+  static const defaultRealitySni = "www.nvidia.com";
+  static const defaultRealityFp = "chrome";
+  static const defaultRealitySid = "8e4a623c";
+  static const defaultSubscriptionUrl = "http://107.174.133.39/api/sub";
 }
 
 const kAnimationDuration = Duration(milliseconds: 250);
