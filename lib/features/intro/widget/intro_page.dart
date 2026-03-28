@@ -187,7 +187,7 @@ class IntroPage extends HookConsumerWidget with PresLogger {
               loggy.error("could not disable analytics", error, stackTrace);
             }
           }
-          // Auto-add ShieldVPN server profile               try {                 await ref.read(profileRepositoryProvider).requireValue.upsertRemote('https://107.174.133.39:2096/sub/tv2p2clfy7j96cfj');               } catch (e) {                 loggy.warning('Failed to auto-add profile: $e');               }               await ref.read(Preferences.introCompleted.notifier).update(true);
+          // Auto-add ShieldVPN server profile               try {                 await ref.read(profileRepositoryProvider).requireValue.addLocal('vless://206c6565-273e-42ca-b357-90db91c1c198@107.174.133.39:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=O_bkOgKLdswCloNcKJcGBV3fyVfbO786GtRQj3Utfkc&security=reality&sid=302a05280f5f&sni=www.nvidia.com&spx=%2Fs1HrhDYmSlQ0ac4&type=tcp#ShieldVPN');               } catch (e) {                 loggy.warning('Failed to auto-add profile: $e');               }               await ref.read(Preferences.introCompleted.notifier).update(true);
         },
       ),
     );
